@@ -45,33 +45,3 @@ export const create = async (req, res) => {
         res.status(500).json({ Err: "Erro ao cadastrar detalhes do atendimento" })
     }
 }
-export const getAll = async (req, res) => {
-    const page = parseInt(req.query.page) || 1
-    const limit = parseInt(req.query.limit) || 10
-    const offset = (page - 1) * 10
-    
-
-    try {
-        const cadas = await Cadas.findAndCountAll({offset: offset, limit: limit})
-
-        const totalPaginas = Math.ceil(cadas.count / limit)
-
-        if (cadas.length === 0) {
-            res.status(404).json({ message: "Não há cadastros" })
-            return
-        }
-
-        res.status(200).json({
-            totalCadas: cadas.count,
-            totalPaginas,
-            paginaAtual: page,
-            itensPorPagina: limit,
-            proximaPagina: totalPaginas === 0 ? null: `http://localhost:7777/api/cadas/page=${page + 1}`,
-            cadas: cadas.rows
-        })
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({ Err: "Erro ao buscar Cadastros" })
-    }
-
-}

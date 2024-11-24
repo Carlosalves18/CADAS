@@ -4,14 +4,16 @@ import axios from 'axios'
 
 const CadasForm = () => {
 
-    const [sagentCabo, setSagentCabo] = React.useState('')
-    const [equipe, setEquipe] = React.useState(null)
-    const [cocluido, setConcluido] = React.useState(null)
-    const [solucaoAplic, setSAplic] = React.useState(null)
-    const [message, setMessage] = React.useState(null)
-    const [loading, setLoading] = React.useState(null)
+    const [sagentCabo, setSagentCabo] = React.useState(" ")
+    const [equipe, setEquipe] = React.useState(" ")
+    const [cocluido, setConcluido] = React.useState(" ")
+    const [solucaoAplic, setSAplic] = React.useState(" ")
+    const [message, setMessage] = React.useState(" ")
+    const [loading, setLoading] = React.useState(" ")
 
     const handlePost = async (event) => {
+
+      event.preventDefault();
 
         setLoading("Carregando...")
 

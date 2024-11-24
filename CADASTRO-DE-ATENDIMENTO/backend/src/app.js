@@ -7,6 +7,7 @@ import Cadas from "./models/cadasModel.js"
 
 import cadasRouter from "./routes/tarefaRoute.js"
 
+
 const app = express()
 
 //3 middlewares para a api funcionar corretamente
